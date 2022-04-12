@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 const employees = [];
@@ -153,6 +154,80 @@ function createEngineer() {
         )
         console.log(engineer);
         employees.push(engineer);
+        console.log(employees);
+        addEmployee()
+    })
+}
+
+function createIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the employee's name?",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter the name of the employee!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is their employee ID?',
+            validate: idInput => {
+                if (idInput) {
+                    const numId = parseInt(idInput)
+                    if (Number.isInteger(numId)) {
+                        return true;
+                    } else {
+                        console.log('input is not a number!');
+                        return false;
+                    }
+                } else {
+                    console.log('Please enter the employee ID!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter employee's email",
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log("Please enter an email");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'What school do they attend?',
+            validate: schoolInput => {
+                if (schoolInput) {
+                    return true;
+                } else {
+                    console.log('Please enter their github username!');
+                    return false;
+                }
+            }
+        }
+    ]).then(employeeData => {
+        const intern = new Intern(
+            employeeData.name,
+            employeeData.id,
+            employeeData.email,
+            employeeData.school
+        )
+        console.log(intern);
+        employees.push(intern);
         console.log(employees);
         addEmployee()
     })
