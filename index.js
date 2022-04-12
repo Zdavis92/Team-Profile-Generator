@@ -1,4 +1,3 @@
-const { restoreDefaultPrompts } = require("inquirer");
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 
@@ -80,8 +79,9 @@ function createManager() {
         console.log(teamManager);
         employees.push(teamManager);
         console.log(employees);
+        addEmployee()
     })
-}
+};
 
 function addEmployee() {
     inquirer.prompt([
@@ -104,13 +104,17 @@ function addEmployee() {
                 }
             }
         }
-    ])
-};
-
-function init() {
-    createManager()
-    .then(addEmployee)
-    .then()
+    ]).then(employee => {
+        if (employee.confirmAdd) {
+            if (employee.addEmployee === "Engineer") {
+                createEngineer();
+            } else {
+                createIntern();
+            }
+        } else {
+            generatePage(employees);
+        }
+    })
 }
 
-init();
+createManager();
