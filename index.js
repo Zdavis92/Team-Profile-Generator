@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-
+const {generatePage} = require("./src/page-template.js");
 const employees = [];
 
 function createManager() {
@@ -78,7 +78,6 @@ function createManager() {
             managerInfo.email,
             managerInfo.officeNumber
         )
-        console.log(teamManager);
         employees.push(teamManager);
         console.log(employees);
         addEmployee()
