@@ -25,9 +25,9 @@ function createCard(employee) {
             </div>
             <div>
                 <ul>
-                    <li>${id}</li>
-                    <li>${email}</li>
-                    <li>${officeNumber}</li>
+                    <li>Id: ${id}</li>
+                    <li>Email: <a href="mailto:${email}">${email}</a></li>
+                    <li>Office number: ${officeNumber}</li>
                 </ul>
             </div>
             </div>`
@@ -42,9 +42,9 @@ function createCard(employee) {
             </div>
             <div>
                 <ul>
-                    <li>${id}</li>
-                    <li>${email}</li>
-                    <li>${github}</li>
+                    <li>Id: ${id}</li>
+                    <li>Email: <a href="mailto:${email}">${email}</a></li>
+                    <li>GitHub: <a href="https://github.com/${github}" target="_blank">${github}</a></li>
                 </ul>
             </div>
             </div>`
@@ -59,9 +59,9 @@ function createCard(employee) {
             </div>
             <div>
                 <ul>
-                    <li>${id}</li>
-                    <li>${email}</li>
-                    <li>${school}</li>
+                    <li>Id: ${id}</li>
+                    <li>Email: <a href="mailto:${email}">${email}</a></li>
+                    <li>School: ${school}</li>
                 </ul>
             </div>
             </div>`
@@ -76,6 +76,7 @@ const generatePage = (employees) => {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>My Team</title>
     </head>
     <body>
