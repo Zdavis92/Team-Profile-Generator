@@ -1,5 +1,7 @@
 const Manager = require("../lib/Manager");
 const fs = require('fs');
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
 function writeFile(fileContent) {
     fs.writeFile('./dist/index.html', fileContent, err => {
@@ -12,25 +14,58 @@ function writeFile(fileContent) {
     })
 }
 
-function createCards(employees) {
-    employees.forEach(employee => {
-        if (Manager) {
+function createCard(employee) {
+        if (employee instanceof Manager) {
+            const { name, id, email, officeNumber } = employee
             return `
             <div class="card">
-                <div class="card-head">
-                    <h3>${employee.name}</h3>
-                    <h4>Manager</h4>
-                </div>
-                <div>
-                    <ul>
-                        <li>${employee.id}</li>
-                        <li>${employee.email}</li>
-                        <li>${employee.officeNumber}</li>
-                    </ul>
-                </div>
+            <div class="card-head">
+                <h3>${name}</h3>
+                <h4>Manager</h4>
+            </div>
+            <div>
+                <ul>
+                    <li>${id}</li>
+                    <li>${email}</li>
+                    <li>${officeNumber}</li>
+                </ul>
+            </div>
             </div>`
         }
-    })
+        else if (employee instanceof Engineer) {
+            const { name, id, email, github } = employee
+            return `
+            <div class="card">
+            <div class="card-head">
+                <h3>${name}</h3>
+                <h4>Engineer</h4>
+            </div>
+            <div>
+                <ul>
+                    <li>${id}</li>
+                    <li>${email}</li>
+                    <li>${github}</li>
+                </ul>
+            </div>
+            </div>`
+        }
+        else {
+            const { name, id, email, school } = employee
+            return `
+            <div class="card">
+            <div class="card-head">
+                <h3>${name}</h3>
+                <h4>Intern</h4>
+            </div>
+            <div>
+                <ul>
+                    <li>${id}</li>
+                    <li>${email}</li>
+                    <li>${school}</li>
+                </ul>
+            </div>
+            </div>`
+        }
 }
 
 const generatePage = (employees) => {
@@ -48,7 +83,9 @@ const generatePage = (employees) => {
             <h1>My Team</h1>
         </header>
         <div>
-            ${createCards(employees)}
+            ${employees.map(employee => {
+                return createCard(employee)
+            })}
         </div>
     </body>
     </html>`
