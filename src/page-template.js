@@ -23,7 +23,7 @@ function createCard(employee) {
                 <h3>${name}</h3>
                 <h4>Manager</h4>
             </div>
-            <div>
+            <div class="card-body">
                 <ul>
                     <li>Id: ${id}</li>
                     <li>Email: <a href="mailto:${email}">${email}</a></li>
@@ -40,7 +40,7 @@ function createCard(employee) {
                 <h3>${name}</h3>
                 <h4>Engineer</h4>
             </div>
-            <div>
+            <div class="card-body">
                 <ul>
                     <li>Id: ${id}</li>
                     <li>Email: <a href="mailto:${email}">${email}</a></li>
@@ -57,7 +57,7 @@ function createCard(employee) {
                 <h3>${name}</h3>
                 <h4>Intern</h4>
             </div>
-            <div>
+            <div class="card-body">
                 <ul>
                     <li>Id: ${id}</li>
                     <li>Email: <a href="mailto:${email}">${email}</a></li>
@@ -80,10 +80,10 @@ const generatePage = (employees) => {
     <title>My Team</title>
     </head>
     <body>
-        <header>
+        <header class="header">
             <h1>My Team</h1>
         </header>
-        <div>
+        <div class="container">
             ${employees.map(employee => {
                 return createCard(employee)
             })}
